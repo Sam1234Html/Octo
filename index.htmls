@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Brian!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .gradient-text {
+            background: linear-gradient(to right, #60a5fa, #a855f7, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 flex items-center justify-center min-h-screen overflow-hidden">
+
+    <div class="text-center z-10 p-8">
+        <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-4 animate-bounce">
+            Happy Birthday,
+        </h1>
+        <h2 class="text-6xl md:text-8xl font-extrabold gradient-text mb-8">
+            Brian Ngugi Thuku
+        </h2>
+        <p class="text-slate-400 text-lg md:text-xl max-w-md mx-auto leading-relaxed">
+            Wishing you a year filled with innovation, success, and endless growth. Keep pushing the boundaries!
+        </p>
+        
+        <button onclick="celebrate()" class="mt-10 px-8 py-4 bg-white text-black font-bold rounded-full hover:scale-110 transition-transform active:scale-95">
+            Click to Celebrate! 🎈
+        </button>
+    </div>
+
+    <script>
+        function celebrate() {
+            const duration = 3 * 1000;
+            const end = Date.now() + duration;
+
+            (function frame() {
+                confetti({
+                    particleCount: 7,
+                    angle: 60,
+                    spread: 55,
+                    origin: { x: 0 },
+                    colors: ['#60a5fa', '#a855f7', '#ec4899']
+                });
+                confetti({
+                    particleCount: 7,
+                    angle: 120,
+                    spread: 55,
+                    origin: { x: 1 },
+                    colors: ['#60a5fa', '#a855f7', '#ec4899']
+                });
+
+                if (Date.now() < end) {
+                    requestAnimationFrame(frame);
+                }
+            }());
+        }
+
+        // Auto-fire on load
+        window.onload = celebrate;
+    </script>
+</body>
+</html>
